@@ -1,0 +1,74 @@
+:root{
+  --gold:#e0b64a;--ok:#2e9e5b;--bad:#d64545;--ink:#16241c;
+  --panel:rgba(255,255,255,.06);--line:rgba(255,255,255,.13);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  background:linear-gradient(180deg,#123a26,#0b2417 55%,#071710);
+  color:#eaf3ec;-webkit-tap-highlight-color:transparent;
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+}
+.app{max-width:720px;margin:0 auto;padding:16px 12px 22px;min-height:100vh;display:flex;flex-direction:column}
+.hd h1{margin:0;font-size:20px;letter-spacing:2px;font-weight:700}
+.tag{font-size:11px;background:var(--gold);color:#3a2a00;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:2px;letter-spacing:0}
+.sub{margin:3px 0 0;font-size:12px;opacity:.65}
+.screen{flex:1;margin-top:16px}
+.ft{margin-top:16px;font-size:11px;opacity:.4;text-align:center}
+.loading{opacity:.6;font-size:14px;text-align:center;padding:30px 0}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card h2{margin:0 0 8px;font-size:15px;letter-spacing:1px;color:var(--gold)}
+.card ul{margin:0;padding-left:1.1em;font-size:13.5px;opacity:.9}
+.card li{margin:3px 0}
+
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:var(--gold);color:#2b1f00;font-weight:700;font-size:16px;font-family:inherit}
+.btn:disabled{opacity:.45}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#eaf3ec;font-weight:500;margin-top:10px}
+.modes{display:flex;gap:10px;margin:14px 0 16px}
+.modes button{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);font-family:inherit;font-size:15px;color:inherit}
+.modes button.on{background:var(--gold);color:#2b1f00;border-color:transparent;font-weight:700}
+
+.bar{height:4px;border-radius:2px;background:rgba(255,255,255,.15);overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}
+.rowtop{display:flex;justify-content:space-between;font-size:12px;opacity:.75;margin-bottom:6px}
+.round{margin:12px 0 8px;font-size:14px;letter-spacing:1px}
+.dora{display:flex;align-items:center;gap:8px;font-size:12px;opacity:.85;margin-bottom:10px}
+.hand{display:flex;gap:3px;justify-content:center;margin:2px 0}
+
+.tile,.mini{
+  font-family:"Noto Sans Symbols 2","Noto Sans Symbols","Segoe UI Symbol","Apple Symbols",Symbola,sans-serif;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(#fffef8,#e8e1cf);color:#1b1b1b;border-radius:4px;
+  box-shadow:0 2px 0 rgba(0,0,0,.4),inset 0 0 0 1px rgba(0,0,0,.14);
+}
+.tile{flex:1 1 0;min-width:0;aspect-ratio:5/7;border:none;padding:0;font-size:min(5vw,22px);transition:transform .08s}
+.tile.pick:active{transform:translateY(2px)}
+.tile.ok{box-shadow:0 0 0 2px var(--ok),0 2px 0 rgba(0,0,0,.4)}
+.tile.bad{box-shadow:0 0 0 2px var(--bad),0 2px 0 rgba(0,0,0,.4)}
+.tile.red{color:#d22b2b;background:linear-gradient(#fff,#ffe8e8)}
+.tile[disabled]{opacity:.55}
+.tile.ok[disabled],.tile.bad[disabled]{opacity:1}
+
+.fb{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--panel);font-size:14px;animation:pop .18s ease-out}
+.fb.good{border-left:3px solid var(--ok)}
+.fb.bad{border-left:3px solid var(--bad)}
+.fb .ttl{font-weight:700;margin-bottom:6px}
+.fb.good .ttl{color:var(--ok)}
+.fb.bad .ttl{color:var(--bad)}
+.fb .txt{opacity:.95}
+.mini{width:1.6em;height:2.2em;font-size:inherit;vertical-align:-.6em;margin:0 1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.mini.red{color:#d22b2b}
+
+.res{text-align:center;padding:10px 0}
+.score{font-size:46px;font-weight:800;color:var(--gold);line-height:1.1}
+.pct{font-size:13px;opacity:.7}
+.lv{font-size:19px;font-weight:700;margin:10px 0 4px}
+.desc{font-size:13px;opacity:.8;margin:0 auto;max-width:19em}
+.grid{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0}
+.grid i{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-style:normal;background:rgba(46,158,91,.22);box-shadow:inset 0 0 0 1px var(--ok)}
+.grid i.x{background:rgba(214,69,69,.18);box-shadow:inset 0 0 0 1px var(--bad)}
+.wrongs{margin-top:6px;font-size:13px;text-align:left}
+.wrongs div{padding:6px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.wrongs .no{opacity:.6;margin-right:2px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
