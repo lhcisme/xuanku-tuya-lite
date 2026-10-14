@@ -68,6 +68,10 @@ function startGame(){
   S.i = 0; S.score = 0; S.picked = null; S.log = [];
   renderQuestion();
 }
+function roundChips(round){
+  var parts = String(round).split(/\s+/).filter(Boolean);
+  return parts.map(function(s){ return '<span class="chip">' + s + '</span>'; }).join('<span class="dot">·</span>');
+}
 function renderQuestion(){
   var q = S.qs[S.i], done = S.picked !== null, total = S.qs.length;
   var hand = q.hand.map(function(code, idx){
@@ -82,9 +86,10 @@ function renderQuestion(){
   }).join('');
   var html = '<div class="rowtop"><span>第 ' + (S.i + 1) + ' / ' + total + ' 题</span><span>答对 ' + S.score + '</span></div>' +
     '<div class="bar"><i style="width:' + ((S.i + (done ? 1 : 0)) / total * 100) + '%"></i></div>' +
-    '<div class="round">' + q.round + '</div>' +
-    (q.dora ? '<div class="dora">宝牌指示牌 ' + tileHTML(q.dora) + '</div>' : '') +
-    '<div class="hand">' + hand + '</div>';
+    '<div class="meta">' + roundChips(q.round) +
+      (q.dora ? '<span class="dora">宝牌指示 ' + tileHTML(q.dora, 'sm') + '</span>' : '') +
+    '</div>' +
+    '<div class="board"><div class="hand">' + hand + '</div></div>';
   if (done){
     var right = q.hand[S.picked] === q.answer;
     html += '<div class="fb ' + (right ? 'good' : 'bad') + '">' +
